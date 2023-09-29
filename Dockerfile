@@ -1,8 +1,8 @@
-# syntax=docker/dockerfile:1
 
-FROM node:18-alpine
-WORKDIR /app
+
+FROM python:3.9
+WORKDIR /src
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
-RUN yarn install --production
-CMD ["node", "src/index.js"]
-EXPOSE 3000
+CMD ["python","-u","main.py"]
